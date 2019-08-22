@@ -99,6 +99,9 @@
           "path": "json/fn_plus_plsemicolonquote_to_arrow_keys.json"
         },
         {
+          "path": "json/kana_arrows.json"
+        },
+        {
           "path": "json/ijkl_arrows.json"
         },
         {

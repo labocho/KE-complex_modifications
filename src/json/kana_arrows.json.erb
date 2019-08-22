@@ -1,0 +1,62 @@
+<%=
+require "json"
+JAPANESE_KANA_PRESEED = "japanese_kana pressed"
+KEYMAPS = [
+    {h: "left", j: "down", k: "up", l: "right"},
+    {i: "up", j: "left", k: "up", l: "right"},
+]
+
+rules = KEYMAPS.map {|keymap|
+    {
+        description: "かな + #{keymap.keys.map(&:to_s).join} to arrow keys",
+        manipulators: [
+            *keymap.map {|key, direction|
+                {
+                    type: "basic",
+                    from: {
+                        key_code: key,
+                        modifiers: {optional: %w(any)},
+                    },
+                    to: [{
+                        key_code: "#{direction}_arrow",
+                    }],
+                    conditions: [{
+                        type: "variable_if",
+                        name: JAPANESE_KANA_PRESEED,
+                        value: 1,
+                    }],
+                }
+            },
+            {
+                type: "basic",
+                from: {
+                    key_code: "japanese_kana",
+                    modifiers: {optional: %w(any)},
+                },
+                to: [{
+                    set_variable: {
+                        name: JAPANESE_KANA_PRESEED,
+                        value: 1,
+                    },
+                }],
+                to_if_alone: [{
+                    key_code: "japanese_kana",
+                }],
+                to_after_key_up: [{
+                    set_variable: {
+                        name: JAPANESE_KANA_PRESEED,
+                        value: 0,
+                    },
+                }]
+            },
+        ],
+    }
+}
+
+h = {
+    title: "かな + hjkl/ijkl to arrow keys",
+    rules: rules,
+}
+
+JSON.pretty_generate(h)
+%>
