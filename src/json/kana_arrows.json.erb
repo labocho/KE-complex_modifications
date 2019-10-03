@@ -1,9 +1,25 @@
 <%=
 require "json"
 JAPANESE_KANA_PRESEED = "japanese_kana pressed"
+SYMBOLS_AND_CONTROLS = {
+    o: "delete_or_backspace",
+    semicolon: "return_or_enter",
+    e: {key_code: "open_bracket", modifiers: ["left_shift"]},
+    r: {key_code: "close_bracket", modifiers: ["left_shift"]},
+    a: {key_code: "hyphen", modifiers: ["left_shift"]},
+    s: {key_code: "equal_sign", modifiers: ["left_shift"]},
+    d: {key_code: "9", modifiers: ["left_shift"]},
+    f: {key_code: "0", modifiers: ["left_shift"]},
+    g: {key_code: "backslash", modifiers: ["left_shift"]},
+    z: "hyphen",
+    x: "equal_sign",
+    c: "open_bracket",
+    v: "close_bracket",
+    b: "backslash",
+}
 KEYMAPS = [
-    {h: "left_arrow", j: "down_arrow", k: "up_arrow", l: "right_arrow", o: "delete_or_backspace", semicolon: "return_or_enter"},
-    {i: "up_arrow", j: "left_arrow", k: "down_arrow", l: "right_arrow", o: "delete_or_backspace", semicolon: "return_or_enter"},
+    {h: "left_arrow", j: "down_arrow", k: "up_arrow", l: "right_arrow"}.merge(SYMBOLS_AND_CONTROLS),
+    {i: "up_arrow", j: "left_arrow", k: "down_arrow", l: "right_arrow"}.merge(SYMBOLS_AND_CONTROLS),
 ]
 
 rules = KEYMAPS.map {|keymap|
@@ -11,15 +27,20 @@ rules = KEYMAPS.map {|keymap|
         description: "かな + #{keymap.keys[0..3].map(&:to_s).join} to arrow keys",
         manipulators: [
             *keymap.map {|from, to|
+                to = case to
+                when String
+                    {key_code: to}
+                else
+                    to
+                end
+
                 {
                     type: "basic",
                     from: {
                         key_code: from,
                         modifiers: {optional: %w(any)},
                     },
-                    to: [{
-                        key_code: to,
-                    }],
+                    to: [to],
                     conditions: [{
                         type: "variable_if",
                         name: JAPANESE_KANA_PRESEED,
