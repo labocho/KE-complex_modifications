@@ -145,6 +145,81 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "e",
             "modifiers": {
               "optional": [
@@ -197,6 +272,32 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "t",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "a",
             "modifiers": {
               "optional": [
@@ -206,10 +307,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen",
-              "modifiers": [
-                "left_shift"
-              ]
+              "key_code": "hyphen"
             }
           ],
           "conditions": [
@@ -232,10 +330,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
-              "modifiers": [
-                "left_shift"
-              ]
+              "key_code": "equal_sign"
             }
           ],
           "conditions": [
@@ -336,7 +431,10 @@
           },
           "to": [
             {
-              "key_code": "hyphen"
+              "key_code": "comma",
+              "modifiers": [
+                "left_shift"
+              ]
             }
           ],
           "conditions": [
@@ -359,7 +457,10 @@
           },
           "to": [
             {
-              "key_code": "equal_sign"
+              "key_code": "period",
+              "modifiers": [
+                "left_shift"
+              ]
             }
           ],
           "conditions": [
@@ -617,6 +718,81 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "e",
             "modifiers": {
               "optional": [
@@ -669,6 +845,32 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "t",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": [
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "japanese_kana pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "key_code": "a",
             "modifiers": {
               "optional": [
@@ -678,10 +880,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen",
-              "modifiers": [
-                "left_shift"
-              ]
+              "key_code": "hyphen"
             }
           ],
           "conditions": [
@@ -704,10 +903,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
-              "modifiers": [
-                "left_shift"
-              ]
+              "key_code": "equal_sign"
             }
           ],
           "conditions": [
@@ -808,7 +1004,10 @@
           },
           "to": [
             {
-              "key_code": "hyphen"
+              "key_code": "comma",
+              "modifiers": [
+                "left_shift"
+              ]
             }
           ],
           "conditions": [
@@ -831,7 +1030,10 @@
           },
           "to": [
             {
-              "key_code": "equal_sign"
+              "key_code": "period",
+              "modifiers": [
+                "left_shift"
+              ]
             }
           ],
           "conditions": [
