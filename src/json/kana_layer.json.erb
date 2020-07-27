@@ -1,7 +1,11 @@
 <%=
 require "json"
 JAPANESE_KANA_PRESEED = "japanese_kana pressed"
-SYMBOLS_AND_CONTROLS = {
+KEYMAP = {
+    i: "up_arrow",
+    j: "left_arrow",
+    k: "down_arrow",
+    l: "right_arrow",
     o: "delete_or_backspace",
     semicolon: "return_or_enter",
     quote: "grave_accent_and_tilde",
@@ -22,16 +26,12 @@ SYMBOLS_AND_CONTROLS = {
     v: "close_bracket",
     b: "backslash",
 }
-KEYMAPS = [
-    {h: "left_arrow", j: "down_arrow", k: "up_arrow", l: "right_arrow"}.merge(SYMBOLS_AND_CONTROLS),
-    {i: "up_arrow", j: "left_arrow", k: "down_arrow", l: "right_arrow"}.merge(SYMBOLS_AND_CONTROLS),
-]
 
-rules = KEYMAPS.map {|keymap|
+rules = [
     {
-        description: "かな + #{keymap.keys[0..3].map(&:to_s).join} to arrow keys",
+        description: "Use かな to change layer",
         manipulators: [
-            *keymap.map {|from, to|
+            *KEYMAP.map {|from, to|
                 to = case to
                 when String
                     {key_code: to}
@@ -77,10 +77,10 @@ rules = KEYMAPS.map {|keymap|
             },
         ],
     }
-}
+]
 
 h = {
-    title: "かな + hjkl/ijkl to arrow keys",
+    title: "Use かな to change layer",
     rules: rules,
 }
 
