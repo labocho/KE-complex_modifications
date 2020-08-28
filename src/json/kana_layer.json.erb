@@ -1,6 +1,10 @@
 <%=
 require "json"
-JAPANESE_KANA_PRESEED = "japanese_kana pressed"
+RAISE_KEYS = {
+    "かな" => "japanese_kana",
+    "international1" => "international1",
+}
+RAISE_KEY_PRESEED = "raise key pressed"
 KEYMAP = {
     i: "up_arrow",
     j: "left_arrow",
@@ -27,9 +31,9 @@ KEYMAP = {
     b: "backslash",
 }
 
-rules = [
+rules = RAISE_KEYS.map do |raise_key_label, raise_key|
     {
-        description: "Use かな to change layer",
+        description: "Use #{raise_key_label} to change layer",
         manipulators: [
             *KEYMAP.map {|from, to|
                 to = case to
@@ -48,7 +52,7 @@ rules = [
                     to: [to],
                     conditions: [{
                         type: "variable_if",
-                        name: JAPANESE_KANA_PRESEED,
+                        name: RAISE_KEY_PRESEED,
                         value: 1,
                     }],
                 }
@@ -56,31 +60,31 @@ rules = [
             {
                 type: "basic",
                 from: {
-                    key_code: "japanese_kana",
+                    key_code: raise_key,
                     modifiers: {optional: %w(any)},
                 },
                 to: [{
                     set_variable: {
-                        name: JAPANESE_KANA_PRESEED,
+                        name: RAISE_KEY_PRESEED,
                         value: 1,
                     },
                 }],
                 to_if_alone: [{
-                    key_code: "japanese_kana",
+                    key_code: raise_key,
                 }],
                 to_after_key_up: [{
                     set_variable: {
-                        name: JAPANESE_KANA_PRESEED,
+                        name: RAISE_KEY_PRESEED,
                         value: 0,
                     },
                 }]
             },
         ],
     }
-]
+end
 
 h = {
-    title: "Use かな to change layer",
+    title: "Use raise key to change layer",
     rules: rules,
 }
 
